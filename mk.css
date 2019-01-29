@@ -1,0 +1,192 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 150px auto 150px;
+}
+
+header {
+	background: black;
+	grid-column: 1 / -1;
+	grid-row: 1 / 2;
+	color: #FFF;
+	text-align: center;
+}
+
+main {
+	grid-column: 1 / -1;
+	grid-row: 2 / -2;
+}
+
+footer {
+	background: black;
+	grid-column: 1 / -1;
+	grid-row: -1 / -2;
+	color: #FFF;
+	text-align: center;
+}
+
+.player-info {
+	display: grid;
+	grid-template-columns: 300px auto;
+	grid-template-rows: 200px;
+}
+
+.field {
+	display: grid;
+	grid-template-columns: 300px auto;
+	grid-template-rows: auto;
+}
+
+.player-info .stats {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+	border: 1px solid black;
+}
+
+.player-info .item {
+	grid-column: 2 / -1;
+	grid-row: 1 / 2;
+	border: 1px solid black;
+	display: grid;
+	grid-template-columns: 200px auto;
+}
+.player-info .dice {
+	border-right: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.field .icons {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+	border: 1px solid black;
+	display: grid;
+	grid-template-columns: 200px 100px;
+	grid-template-rows: 50px 100px 100px 100px 100px;
+}
+
+.field .cards {
+	grid-column: 2 / -1;
+	grid-row: 1 / 2;
+	border: 1px solid black;
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 20px auto;
+}
+.cards .site-heading {
+	grid-column: 1/ -1;
+	margin: auto;
+}
+
+.players {
+	margin: auto;
+}
+
+#cards-arroy {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+	grid-template-rows: 300px 300px 300px;
+}
+
+#cards-arroy .card {
+	width: 240px;
+	height: 240px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: auto 20%;
+}
+
+#cards-arroy .card img{
+	border: 1px solid black;
+}
+
+
+
+#playerAll{
+	grid-column: 1/ -1;
+	margin: auto;
+}
+
+#player1 {
+	grid-column: 1/ 2;
+}
+#player2 {
+	grid-column: 1/ 2;
+	
+}
+#player3 {
+	grid-column: 1/ 2;
+	
+}
+#player4 {
+	grid-column: 1/ 2;
+}
+
+.ava {
+	border: 1px solid black;
+	height: 15px;
+	width: 15px;
+	grid-column: 2/ 3;
+	margin: auto;
+}
+
+
+.card-info {
+	margin: auto;
+}
+
+#cards-arroy .card img:hover {
+	border: 1px solid red;
+}
+
+#cards-arroy .card.hidden {
+	display: none;
+}
+
+.field .players {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	grid-gap: 10px;
+}
+
+.field .players span, .field .players button {
+	grid-column: 1/ -1;
+	margin: auto;
+}
+
+.bord-player-cards {
+	display: none;
+}
+#thisPlayerWalks {
+	display: flex;
+	justify-content: center;	
+}
+
+#thisPlayerWalks img{
+	width: 70px;
+	height: 100px;
+	margin: 0 10px
+}
+
+#thisPlayerWalks .card-info{
+	display: flex;
+	justify-content: center;
+}
+
+#two {
+	display: flex;
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+	justify-content: center;
+	margin: auto;
+    align-items: center;
+}
