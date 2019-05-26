@@ -16,33 +16,27 @@ start(`Введите количество игроков от 2 до 4`); // н
 
 
 function start(text) {
-	// let answer = Number(prompt(text));
-	// if (answer == 2 || answer == 3 || answer == 4) {
-	// 	CreatePlayers(answer);
-	// } else {
-	// 	start(`Была введена некоретная информция. Введите количество игроков от 2 до 4`);
-	// }
-
-	CreatePlayers(4); //удалить
+	let answer = Number(prompt(text));
+	if (answer == 2 || answer == 3 || answer == 4) {
+		CreatePlayers(answer);
+	} else {
+		start(`Была введена некоретная информция. Введите количество игроков от 2 до 4`);
+	}
 
 }
 
 function CreatePlayers(countPlayers) {
 
-	// for (let i=0; i < countPlayers; i++) {
-	// 	let name;
-	// 	if (i == 2) {
-	// 		name = prompt(`введите имя 3-его игрока`);
-	// 		createObjectPlaters(name, i+1);
-	// 		continue
-	// 	}
-	// 	name = prompt(`введите имя `+(i+1)+`-ого игрока`);
-	// 	createObjectPlaters(name, i+1);
-	// }
-	createObjectPlaters("Vasya", 1); //удалить
-	createObjectPlaters("Kolya", 2); //удалить
-	createObjectPlaters("Petya", 3); //удалить
-	createObjectPlaters("Dima", 4); //удалить
+	for (let i=0; i < countPlayers; i++) {
+		let name;
+		if (i == 2) {
+			name = prompt(`введите имя 3-его игрока`);
+			createObjectPlaters(name, i+1);
+			continue
+		}
+		name = prompt(`введите имя `+(i+1)+`-ого игрока`);
+		createObjectPlaters(name, i+1);
+	}
 
 	createObjectCards();
 	createHtmlElementPlayerAndCards(arrPlayers, arrCards);
