@@ -12,7 +12,7 @@ const gameStatus = { //игра
 				}; 
 const startingCards = ["Пшеница", "Пекарня"]; //какие карты должны быть изначально у игроков?
 
-start(`Введите количество игроков от 2 до 4`); // ну поехали, с богом js, алерт!
+start(`Введите количество игроков от 2 до 4`); // Запуск первого вопроса
 
 
 function start(text) {
@@ -147,8 +147,9 @@ function createHtmlElementPlayerAndCards(players, cards){
 	players.forEach(function(item, i){
 		let playersField = document.querySelector('#playersField');
 		let test = `<div id="player_id-`+(i+1)+`" class="players player_field">
+                    <img class="players__img" src="img/player`+(i+1)+`.png" alt="">
   					<span class="name__player">`+ item.name +`</span>
-  					<span class="money__player">Монет: `+ item.money +`</span>
+  					<span class="money__player"><img src="img/XMLID%2022.svg" alt="monet"><div class="count_money">`+ item.money +`<div></span>
   				</div>`;
   		let boxCards = document.querySelector('#box__cards');
 		let boxPlayerCards = `<div id='box__player`+(i+1)+`-cards' class="bord-player-cards p`+(i+1)+` hidden" data-cards=""></div>`;
@@ -162,7 +163,7 @@ function createHtmlElementPlayerAndCards(players, cards){
 		let playersField = document.querySelector('#cards__arr');
 		let addCardOnField = `<div id="card-`+ item.img +`" class="card `+ item.color +`" data-value='`+ item.count +`' card-type='`+item.img+`'">
 			  					<div class="box__card-img"><img src="img/`+ item.img +`.png"></div>
-			  					<div class="card-info">x`+ item.count +`</div>
+			  					<div class="card-info">`+ item.count +`</div>
 		  					</div>`;
 		playersField.insertAdjacentHTML("beforeEnd", addCardOnField);
 	});
@@ -193,7 +194,7 @@ function htmlChangesAfterPurchase() {
 	let centerCards = Array.prototype.slice.call(document.querySelectorAll('#cards__arr .card'));
 
 	playerLeftFields.forEach(function(item, i){
-		item.querySelector('.money__player').innerText = 'Монет: '+gameStatus.players[i].money;
+		item.querySelector('.count_money').innerHTML = +gameStatus.players[i].money;
 	});
 
 	
@@ -203,7 +204,6 @@ function htmlChangesAfterPurchase() {
 			if (gameStatus.players[i].cards[j].count) elem.classList.remove('hidden');
 		});
 	});
-	console.log(gameStatus);
 	centerCards.forEach(function(item, i){
 		item.querySelector('.card-info').innerText = 'x'+gameStatus.cards[i].count;
 		if (!gameStatus.cards[i].count) {
@@ -214,7 +214,7 @@ function htmlChangesAfterPurchase() {
 }
 
 
-//----------------------новый код------------------------------------------------------------------------------------------------
+//----------------------код: события и функции меняющие основной объект------------------------------------------------------------------------------------------------
 //тригерная функция
 
 function triggerEffct(){
@@ -226,15 +226,19 @@ function triggerEffct(){
 	let boxDice = document.querySelector('#box_dice');
 	let boxCards = document.querySelector('#box__player'+gameStatus.whoseMove.id+'-cards');
 	let boxLastCards = document.querySelector('#box__player'+gameStatus.whoseTurnWasIt.id+'-cards');
+	let cubImg = document.querySelector('.cub__img');
 
 	
 
 	if (gameStatus.status === 'move') {
+		
+		boxDice.classList.remove('count'+gameStatus.diceValue);
 		alertField.innerText = gameStatus.whoseMove.name +' бросает кубики';
 		movePlayerField.classList.toggle('move');
 		if (gameStatus.whoseTurnWasIt) {
 			moveLastPlayerField.classList.toggle('end');
 			boxLastCards.classList.toggle('hidden');
+			cubImg.classList.toggle('hidden');
 		}
 		boxCards.classList.toggle('hidden');
 
@@ -242,12 +246,13 @@ function triggerEffct(){
 
 	if (gameStatus.status === 'end') {
 		alertField.innerText = gameStatus.whoseMove.name +' завершает и передает ход';
-		boxDice.innerText = gameStatus.diceValue;
+		boxDice.classList.add('count'+gameStatus.diceValue);
+		cubImg.classList.toggle('hidden');
 		movePlayerField.classList.toggle('move');
 		movePlayerField.classList.toggle('end');
 	}
 }
-console.log("new")
+
 function moneyProcess(){
 	gameStatus.players.forEach(function(player){
 		if (gameStatus.whoseMove.id != player.id) {
@@ -255,7 +260,6 @@ function moneyProcess(){
 				if (card.count && card.color ==='red' && card.active.indexOf(gameStatus.diceValue) !=-1) {
 					if (gameStatus.whoseMove.money - card.income * card.count < 0) {
 						htmlChangesAfterPurchase();
-						console.log(gameStatus, "туть");
 						alert('выпала 3, но игрок '+gameStatus.whoseMove.name+' не может выплатить долг игроку '+player.name+', у него нет денег');
 					} else {
 						player.money += card.income * card.count;
@@ -331,7 +335,7 @@ function developments() {
 
 //исполняющие функции
 function firstStepPlayerSelection() {
-	gameStatus.whoseMove = arrPlayers[Math.floor( Math.random() * 3)];
+	gameStatus.whoseMove = arrPlayers[Math.floor( arrPlayers.length * Math.random() )];
 	gameStatus.status = 'move';
 }
 

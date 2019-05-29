@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-	<meta charset="utf-8">
-	<title> Мачикора </title>
-	<link rel="stylesheet" type="text/css" href="mk.css">	
-  </head>
-  <body class="striped-layout">
-  	<header>
-  		 <h1 class="site-heading">header</h1>
-  	</header>
-  	<main id="main">
-  		<div class = "player-info">
-  			<div class = "stats">бонусные карты:</div>
-  			<div class = "item">
-  				<div id = "dice">
-  					<span id="alert">Случайный выбор первого игрока</span>
-  					<button id="selection" class="status_game">Выбрать</button>
-  					<button id="roll" class="status_game hidden">Бросить кубики</button>
-  					<button id="end" class="status_game hidden">Завершить ход</button>
-  					<div id="box_dice" class="hidden"></div>
-  				</div>
-  				<div id = "box__panel">
-  					<span>Карточки игрока:</span>
-  					<div id = "box__cards">
-  					</div>
-  				</div>
-  			</div>
-  		</div>	
-  		<div class = "field">
-  			<div id="playersField"class = "icons">
-  				<div id="playerAll">Игроки:</div>
-  			</div>
-  			<div class = "cards">
-  				<div class="site-heading">Карточки:</div>
-  				<div id="cards__arr" class="cards-all">
-	  			</div>
-  			</div>
-  		</div>	
-  	</main>
-  	<footer><h1 class="site-heading">footer</h1>
-  	</footer>
-    <script src ="mk.js"></script>
-  </body>
+<head>
+    <meta charset="utf-8">
+    <title> Мачикора </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300i,400,700&display=swap" rel="stylesheet">
+</head>
+<body class="striped-layout">
+<main id="main">
+    <header class="header"></header>
+    <div class="info">
+        <div class="base">
+            <h3 class="base__heading pl">Бонусные карты:</h3>
+            <div class="base__box pl">
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+                <div class="base__items"><img class="base__img" src="img/sales.png" alt="photo"></div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="dice">
+                <span id="alert">Случайный выбор первого игрока</span>
+                <div class="cub">
+                    <img class="cub__img" src="img/brick.svg" alt="brick"><div id="box_dice" class="dice-count hidden"></div>
+                </div>
+                <button id="selection" class="status_game">Выбрать первого игрока</button>
+                <button id="roll" class="status_game hidden">Бросить кубики</button>
+                <button id="end" class="status_game hidden">Завершить ход</button>
+            </div>
+            <div id="box__panel">
+                <h3>Карточки игрока:</h3>
+                <div id="box__cards">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <div id="playersField" class="icons">
+            <h3 class="pl" id="playerAll">Игроки:</h3>
+        </div>
+        <div class="cards">
+            <h3 class="site-heading">Карточки:</h3>
+            <div id="cards__arr" class="cards-all">
+            </div>
+        </div>
+    </div>
+</main>
+<script src="mk.js"></script>
+</body>
 </html>
 
